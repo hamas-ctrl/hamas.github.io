@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengalaman - Ahmad Hamas | Portofolio Eksklusif</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-primary: #070b14;
+      --bg-secondary: #0d1322;
+      --bg-card: rgba(19, 29, 49, 0.75);
+      --bg-card-hover: rgba(26, 39, 68, 0.9);
+      --accent-blue: #3b82f6;
+      --accent-blue-light: #60a5fa;
+      --accent-glow: rgba(59, 130, 246, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(51, 65, 85, 0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 10% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 40%);
+    }
+
+    /* Sidebar Navigasi */
+    aside {
+      width: 270px;
+      background-color: var(--bg-secondary);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.5rem 1.5rem;
+      position: fixed;
+      height: 100vh;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: 0.5px;
+      padding-left: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
+    }
+
+    .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.15rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-radius: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      transform: translateX(4px);
+    }
+
+    .nav-links li a.active {
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      border: none;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .nav-links li a i {
+      font-size: 1.1rem;
+      width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-footer {
+      background: rgba(13, 19, 34, 0.6);
+      border: 1px solid var(--border-color);
+      padding: 0.85rem;
+      border-radius: 0.85rem;
+      text-align: center;
+    }
+
+    .sidebar-footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Main Content Layout */
+    main {
+      margin-left: 270px;
+      flex: 1;
+      padding: 2.5rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      max-width: 1450px;
+    }
+
+    /* Top Header Bar */
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      min-height: 50px;
+    }
+
+    .page-title h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .page-title p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Experience Timeline Grid */
+    .experience-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      display: flex;
+      gap: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-card:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
+      background: var(--bg-card-hover);
+    }
+
+    .exp-icon-box {
+      width: 60px;
+      height: 60px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-blue-light);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .exp-details {
+      flex: 1;
+    }
+
+    .exp-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .exp-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .exp-badge {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--accent-blue-light);
+      padding: 0.3rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .exp-company {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent-blue-light);
+      margin-bottom: 1rem;
+    }
+
+    .exp-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .exp-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .exp-tag {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      aside {
+        width: 85px;
+        padding: 2rem 0.75rem;
+      }
+
+      .logo-area span,
+      .nav-links span,
+      .sidebar-footer {
+        display: none;
+      }
+
+      main {
+        margin-left: 85px;
+        padding: 2rem 1.5rem;
+      }
+
+      .exp-card {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar Navigasi -->
+  <aside>
+    <div>
+      <div class="logo-area">
+        <div class="logo-icon"><i class="fa-solid fa-gem"></i></div>
+        <span>PORTFOLIO</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fa-solid fa-house-chimney"></i><span>Dashboard</span></a></li>
+        <li><a href="profile.html"><i class="fa-solid fa-user-tie"></i><span>Profil</span></a></li>
+        <li><a href="pengalaman.html" class="active"><i class="fa-solid fa-briefcase"></i><span>Pengalaman</span></a>
+        </li>
+        <li><a href="pendidikan.html"><i class="fa-solid fa-graduation-cap"></i><span>Pendidikan</span></a></li>
+        <li><a href="kontak.html"><i class="fa-solid fa-address-book"></i><span>Kontak</span></a></li>
+      </ul>
+    </div>
+    <div class="sidebar-footer">
+      <p>&copy; 2026 Midnight Royal</p>
+    </div>
+  </aside>
+
+  <!-- Konten Utama -->
+  <main>
+    <!-- Top Header Bar -->
+    <div class="top-header">
+      <div class="page-title">
+        <h2>Riwayat Pengalaman</h2>
+        <p>Dokumentasi proyek, keorganisasian, dan keterlibatan aktif profesional.</p>
+      </div>
+      <div></div>
+    </div>
+
+    <!-- Daftar Pengalaman (Timeline Cards) -->
+    <div class="experience-container">
+
+      <!-- Pengalaman 1 -->
+      <div class="exp-card">
+        <div class="exp-icon-box">
+          <i class="fa-solid fa-server"></i>
+        </div>
+        <div class="exp-details">
+          <div class="exp-header-row">
+            <div class="exp-title">Backend Developer - Proyek "Donutela"</div>
+            <div class="exp-badge">Proyek Kolaboratif</div>
+          </div>
+          <div class="exp-company">Pengembangan Web Aplikasi Toko Donat</div>
+          <div class="exp-desc">
+            Bertanggung jawab penuh atas perancangan arsitektur sisi pelayan (*backend*), pengaturan rute API,
+            pengelolaan logika database relasional, serta integrasi sistem server agar aplikasi berjalan secara stabil
+            dan responsif.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Node.js</span>
+            <span class="exp-tag">Express</span>
+            <span class="exp-tag">SQLite</span>
+            <span class="exp-tag">REST API</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pengalaman 2 -->
+      <div class="exp-card">
+        <div class="exp-icon-box">
+          <i class="fa-solid fa-users-rectangle"></i>
+        </div>
+        <div class="exp-details">
+          <div class="exp-header-row">
+            <div class="exp-title">Anggota & Perwakilan Mahasiswa</div>
+            <div class="exp-badge">Organisasi Kampus</div>
+          </div>
+          <div class="exp-company">Organisasi Kemahasiswaan HAMKA</div>
+          <div class="exp-desc">
+            Aktif berpartisipasi dalam berbagai program kerja organisasi, berkolaborasi dengan jajaran pengurus, serta
+            mengambil peran penting termasuk penugasan sebagai co-MC dalam acara perayaan ulang tahun organisasi.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Public Speaking</span>
+            <span class="exp-tag">Tim Koordinasi</span>
+            <span class="exp-tag">Manajemen Acara</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pengalaman 3 -->
+      <div class="exp-card">
+        <div class="exp-icon-box">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <div class="exp-details">
+          <div class="exp-header-row">
+            <div class="exp-title">Pengembangan Portfolio & Sistem Web</div>
+            <div class="exp-badge">Inisiatif Mandiri</div>
+          </div>
+          <div class="exp-company">Personal Workspace & GitHub Deployment</div>
+          <div class="exp-desc">
+            Merancang dan membangun situs web portofolio pribadi bertema "Midnight Royal" menggunakan HTML, CSS modern,
+            serta menerapkan alur kerja kontrol versi Git dan publikasi otomatis melalui GitHub Pages.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">HTML5 / CSS3</span>
+            <span class="exp-tag">Git & GitHub</span>
+            <span class="exp-tag">UI/UX Design</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+
+</html>
