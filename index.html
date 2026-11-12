@@ -153,6 +153,7 @@
       align-items: center;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--border-color);
+      min-height: 50px;
     }
 
     .page-title h2 {
@@ -166,26 +167,7 @@
       color: var(--text-muted);
     }
 
-    .user-badge-top {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 0.5rem 1.1rem;
-      border-radius: 50px;
-      backdrop-filter: blur(8px);
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background-color: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #10b981;
-    }
-
-    /* Bento Grid Utama (Lebih Kompleks & Detail) */
+    /* Bento Grid Utama */
     .bento-grid {
       display: grid;
       grid-template-columns: 1.3fr 0.9fr;
@@ -205,6 +187,29 @@
     .bento-card:hover {
       border-color: rgba(59, 130, 246, 0.4);
       box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
+    }
+
+    /* Kartu Kanan Interaktif (Bisa diklik) */
+    .interactive-card {
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .interactive-card::after {
+      content: 'Klik untuk Detail & Slide ↗';
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      font-size: 0.75rem;
+      color: var(--accent-blue-light);
+      font-weight: 600;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .interactive-card:hover::after {
+      opacity: 1;
     }
 
     /* Hero Welcome Section */
@@ -245,7 +250,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Stats Grid di dalam Hero */
     .hero-stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -307,7 +311,7 @@
       color: var(--accent-blue-light);
     }
 
-    /* Right Column: Profile & Tech Stack */
+    /* Profile Box */
     .right-column {
       display: flex;
       flex-direction: column;
@@ -335,6 +339,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .interactive-card:hover .avatar-frame img {
+      transform: scale(1.1);
     }
 
     .profile-details h3 {
@@ -358,7 +367,6 @@
       display: block;
     }
 
-    /* Tech Stack Section inside Bento */
     .tech-stack-section {
       border-top: 1px solid var(--border-color);
       padding-top: 1.25rem;
@@ -394,7 +402,7 @@
       gap: 0.35rem;
     }
 
-    /* Bottom Feature Row (4 Columns Detail) */
+    /* Feature Grid Bawah */
     .feature-grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -443,7 +451,208 @@
       line-height: 1.4;
     }
 
-    /* Responsive Design */
+    /* MODAL / SLIDE PRESENTASI INTERAKTIF */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(7, 11, 20, 0.85);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-container {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 1.75rem;
+      width: 680px;
+      max-width: 90%;
+      padding: 2.5rem;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      animation: scaleUp 0.3s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: #ef4444;
+      border-color: #ef4444;
+      color: white;
+    }
+
+    /* Slide Konten */
+    .slide-content {
+      display: none;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .slide-content.active {
+      display: flex;
+    }
+
+    /* Foto Diperbesar (Zoom Modal) */
+    .modal-avatar-zoom {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--accent-blue);
+      box-shadow: 0 0 35px var(--accent-glow);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .modal-avatar-zoom img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-avatar-zoom:hover {
+      transform: scale(1.08);
+    }
+
+    .slide-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .slide-subtitle {
+      font-size: 0.95rem;
+      color: var(--accent-blue-light);
+      font-weight: 600;
+    }
+
+    .slide-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    /* Navigasi Slide (Next / Prev) */
+    .slide-nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .slide-btn {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--accent-blue-light);
+      padding: 0.6rem 1.25rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .slide-btn:hover {
+      background: var(--accent-blue);
+      color: white;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .slide-indicators {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .indicator {
+      width: 8px;
+      height: 8px;
+      background: var(--border-color);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .indicator.active {
+      background: var(--accent-blue);
+      width: 20px;
+      border-radius: 4px;
+    }
+
+    /* Lightbox Fullscreen Image Popup */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+    }
+
+    .lightbox-img {
+      max-width: 85%;
+      max-height: 85vh;
+      border-radius: 1rem;
+      border: 2px solid var(--accent-blue);
+      box-shadow: 0 0 50px var(--accent-glow);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scaleUp {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive */
     @media (max-width: 1024px) {
       aside {
         width: 85px;
@@ -473,17 +682,6 @@
         font-size: 2.25rem;
       }
     }
-
-    @media (max-width: 768px) {
-      .feature-grid-4 {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-stats-grid {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-      }
-    }
   </style>
 </head>
 
@@ -511,19 +709,16 @@
 
   <!-- Konten Utama -->
   <main>
-    <!-- Top Header Bar -->
+    <!-- Top Header Bar (Bagian Kanan Dikosongkan) -->
     <div class="top-header">
       <div class="page-title">
         <h2>Dashboard Utama</h2>
         <p>Portal digital pribadi, sistem informasi, dan dokumentasi proyek.</p>
       </div>
-      <div class="user-badge-top">
-        <div class="status-dot"></div>
-        <span style="font-size: 0.85rem; font-weight: 600;">Sistem Aktif & Terhubung</span>
-      </div>
+      <div></div>
     </div>
 
-    <!-- Bento Grid Utama (Lebih Detail & Kaya Konten) -->
+    <!-- Bento Grid Utama -->
     <div class="bento-grid">
 
       <!-- Kotak Kiri: Greeting, Deskripsi, & Metrik -->
@@ -540,7 +735,6 @@
           </p>
         </div>
 
-        <!-- Statistik Mini / Highlight Metrik -->
         <div class="hero-stats-grid">
           <div class="stat-item">
             <h3>05+</h3>
@@ -566,12 +760,12 @@
         </div>
       </div>
 
-      <!-- Kotak Kanan: Profil Ringkas & Tech Stack Keahlian -->
-      <div class="bento-card right-column">
+      <!-- Kotak Kanan: Profile & Tech Stack (Bisa Diklik / Interaktif) -->
+      <div class="bento-card right-column interactive-card" onclick="openModal()">
         <div class="profile-box">
           <div class="avatar-frame">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
-              alt="Foto Profil">
+              alt="Foto Profil" id="mainAvatarImg">
           </div>
           <div class="profile-details">
             <h3>[Nama Anda Disini]</h3>
@@ -580,7 +774,6 @@
           </div>
         </div>
 
-        <!-- Bagian Tech Stack Detail -->
         <div class="tech-stack-section">
           <h4><i class="fa-solid fa-layer-group text-blue"></i> Teknologi & Tools Utama</h4>
           <div class="tech-badges">
@@ -596,7 +789,7 @@
 
     </div>
 
-    <!-- Baris Fitur Bawah (4 Kotak Detail Informasi Pendukung) -->
+    <!-- Baris Fitur Bawah -->
     <div class="feature-grid-4">
       <div class="feature-card">
         <div class="feature-icon-top"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -621,6 +814,120 @@
     </div>
   </main>
 
+  <!-- MODAL PRESENTASI / SLIDE INTERAKTIF -->
+  <div class="modal-overlay" id="presentationModal" onclick="handleOverlayClick(event)">
+    <div class="modal-container">
+      <div class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
+
+      <!-- Slide 1: Identitas & Foto (Bisa di-zoom) -->
+      <div class="slide-content active" id="slide-1">
+        <div class="modal-avatar-zoom" onclick="openLightbox(event)" title="Klik untuk memperbesar foto">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
+            alt="Zoom Foto">
+        </div>
+        <div class="slide-title">[Nama Anda Disini]</div>
+        <div class="slide-subtitle">Informatics Engineering Student</div>
+        <p class="slide-desc">
+          Selamat datang di slide presentasi profil pribadi. Klik foto di atas untuk memperbesarnya, atau gunakan tombol
+          navigasi di bawah untuk melihat rincian keahlian dan minat akademik saya.
+        </p>
+      </div>
+
+      <!-- Slide 2: Fokus Keahlian -->
+      <div class="slide-content" id="slide-2">
+        <div style="font-size: 3rem; color: var(--accent-blue-light); margin-bottom: 0.5rem;">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <div class="slide-title">Keahlian & Kompetensi</div>
+        <div class="slide-subtitle">Pengembangan Perangkat Lunak</div>
+        <p class="slide-desc">
+          Berfokus pada pengembangan sistem backend menggunakan Node.js, pengelolaan data relasional dengan SQLite,
+          serta perancangan antarmuka web modern dengan standar estetika tinggi.
+        </p>
+      </div>
+
+      <!-- Slide 3: Visi & Misi -->
+      <div class="slide-content" id="slide-3">
+        <div style="font-size: 3rem; color: var(--accent-blue-light); margin-bottom: 0.5rem;">
+          <i class="fa-solid fa-rocket"></i>
+        </div>
+        <div class="slide-title">Visi & Dedikasi</div>
+        <div class="slide-subtitle">Kreativitas & Ketelitian Kode</div>
+        <p class="slide-desc">
+          Menciptakan solusi digital yang efisien, bersih, dan fungsional. Selalu antusias mempelajari teknologi baru
+          dan mengimplementasikannya ke dalam proyek nyata.
+        </p>
+      </div>
+
+      <!-- Tombol Navigasi Slide & Indikator -->
+      <div class="slide-nav-row">
+        <button class="slide-btn" onclick="changeSlide(-1)"><i class="fa-solid fa-arrow-left"></i> Sebelumnya</button>
+
+        <div class="slide-indicators">
+          <div class="indicator active" id="ind-1"></div>
+          <div class="indicator" id="ind-2"></div>
+          <div class="indicator" id="ind-3"></div>
+        </div>
+
+        <button class="slide-btn" onclick="changeSlide(1)">Selanjutnya <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX UNTUK ZOOM FOTO FULLSCREEN -->
+  <div class="lightbox-overlay" id="lightboxModal" onclick="closeLightbox()">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop"
+      alt="Fullscreen Foto" class="lightbox-img">
+  </div>
+
+  <!-- SCRIPT INTERAKTIF MODAL & SLIDE -->
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 3;
+
+    function openModal() {
+      document.getElementById('presentationModal').style.display = 'flex';
+      showSlide(currentSlide);
+    }
+
+    function closeModal() {
+      document.getElementById('presentationModal').style.display = 'none';
+    }
+
+    function handleOverlayClick(event) {
+      if (event.target === document.getElementById('presentationModal')) {
+        closeModal();
+      }
+    }
+
+    function changeSlide(direction) {
+      currentSlide += direction;
+      if (currentSlide > totalSlides) {
+        currentSlide = 1;
+      } else if (currentSlide < 1) {
+        currentSlide = totalSlides;
+      }
+      showSlide(currentSlide);
+    }
+
+    function showSlide(n) {
+      for (let i = 1; i <= totalSlides; i++) {
+        document.getElementById(`slide-${i}`).classList.remove('active');
+        document.getElementById(`ind-${i}`).classList.remove('active');
+      }
+      document.getElementById(`slide-${n}`).classList.add('active');
+      document.getElementById(`ind-${n}`).classList.add('active');
+    }
+
+    function openLightbox(event) {
+      event.stopPropagation(); // Mencegah modal tertutup
+      document.getElementById('lightboxModal').style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').style.display = 'none';
+    }
+  </script>
 </body>
 
 </html>
