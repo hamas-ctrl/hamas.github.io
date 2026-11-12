@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <link rel="icon" type="image/jpeg"
+    href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMfoUARq_fms1tTT9UMAZaMbPrhExDQs0vM6obujr2Aw&s=10">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Utama - Ahmad Hamas</title>
+  <!-- W3.CSS Framework -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* TOMBOL HAMBURGER (GARIS TIGA) - HANYA MUNCUL DI HP */
+    .mobile-topbar {
+      display: none;
+      background-color: #111;
+      color: #ffd700;
+      padding: 15px 20px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+    }
+
+    .hamburger-btn {
+      background: none;
+      border: 2px solid #ffd700;
+      color: #ffd700;
+      font-size: 20px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+      .mobile-topbar {
+        display: flex !important;
+      }
+
+      /* Sidebar disembunyikan dulu secara default di HP */
+      .sidebar-custom {
+        display: none !important;
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+        box-shadow: none !important;
+        border-right: none !important;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      /* Kelas untuk menampilkan sidebar saat tombol diklik */
+      .sidebar-custom.show {
+        display: block !important;
+      }
+
+      .main-content {
+        margin-left: 0 !important;
+        padding: 20px !important;
+      }
+
+      .profile-container {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 20px !important;
+      }
+
+      .profile-container>div:first-child {
+        padding-right: 0 !important;
+        margin-bottom: 25px !important;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* SIDEBAR PUTIH ELEGAN DI KIRI (4 MENU) */
+    .sidebar-custom {
+      width: 25%;
+      background-color: #ffffff;
+      color: #000000;
+      position: fixed;
+      height: 100%;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.06);
+      border-right: 1px solid #eaeaea;
+      z-index: 1000;
+    }
+
+    /* Logo / Header Sidebar */
+    .sidebar-header {
+      padding: 30px 20px;
+      background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Gaya Menu Item Sidebar */
+    .sidebar-custom .w3-button {
+      text-align: left;
+      display: block;
+      width: 100%;
+      padding: 16px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #444;
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .sidebar-custom .w3-button:hover {
+      background-color: #fff9e6 !important;
+      color: #b8860b !important;
+      padding-left: 26px !important;
+      border-left: 4px solid #ffd700;
+    }
+
+    /* Indikator Menu Aktif di Beranda */
+    .menu-aktif {
+      background-color: #fff8e1 !important;
+      color: #b8860b !important;
+      font-weight: 600;
+      border-left: 4px solid #ffd700 !important;
+    }
+
+    /* KONTEN UTAMA HITAM & EMAS DI KANAN */
+    .main-content {
+      margin-left: 25%;
+      background-color: #0b0b0b;
+      color: #ffd700;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    /* Kartu Profil Utama */
+    .profile-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #161616 0%, #111111 100%);
+      border: 1px solid #262626;
+      border-radius: 16px;
+      padding: 40px;
+      margin-top: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #ffd700, #ffaa00);
+    }
+
+    /* Bingkai Foto Profil */
+    .photo-frame {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 4px solid #ffd700;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-frame:hover {
+      transform: scale(1.03);
+    }
+
+    /* Kotak Statistik / Fitur Bawah */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .stat-card {
+      background-color: #141414;
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: #ffd700;
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+
+<body style="margin: 0; background-color: #0b0b0b;">
+
+  <!-- TOPBAR KHUSUS HP (DENGAN TOMBOL GARIS TIGA) -->
+  <div class="mobile-topbar">
+    <span style="font-weight: 700; font-size: 16px;">MY PROFILE</span>
+    <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+  </div>
+
+  <!-- SIDEBAR PUTIH DENGAN 4 MENU -->
+  <div class="sidebar-custom" id="mySidebar">
+    <div class="sidebar-header">
+      <h4 style="margin: 0; font-weight: 700; color: #111; letter-spacing: 0.5px;"><b>MY PROFILE</b></h4>
+      <p style="font-size: 11px; color: #777; margin: 4px 0 0 0;">Web Design Project</p>
+    </div>
+
+    <div style="padding-top: 15px;">
+      <a href="index.html" class="w3-bar-item w3-button menu-aktif" style="text-decoration: none;">🏠 &nbsp; Beranda</a>
+      <a href="profile.html" class="w3-bar-item w3-button" style="text-decoration: none; color: #333;">👤 &nbsp;
+        Profile</a>
+      <a href="proyek.html" class="w3-bar-item w3-button" style="text-decoration: none; color: #333;">💼 &nbsp;
+        Proyek</a>
+      <a href="kontak.html" class="w3-bar-item w3-button" style="text-decoration: none; color: #333;">📞 &nbsp;
+        Kontak</a>
+    </div>
+  </div>
+
+  <!-- KONTEN UTAMA DASHBOARD -->
+  <div class="main-content">
+    <div style="border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 20px;">
+      <h2 style="color: #ffd700; margin: 0; font-weight: 700; font-size: 26px;"><b>Dashboard Utama</b></h2>
+      <p style="color: #888; margin: 5px 0 0 0; font-size: 14px;">Selamat datang kembali di portal pribadi Anda.</p>
+    </div>
+
+    <!-- KOTAK UTAMA PROFIL & SAMBUTAN -->
+    <div class="profile-container">
+
+      <!-- Kolom Teks di Kiri -->
+      <div style="flex: 1; padding-right: 40px;">
+        <span
+          style="background-color: rgba(255, 215, 0, 0.1); color: #ffd700; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid rgba(255, 215, 0, 0.3);">
+          ✨ Portfolio Website
+        </span>
+        <h3 style="color: #ffffff; margin-top: 15px; font-size: 24px; font-weight: 600;">
+          Halo, Selamat Datang!
+        </h3>
+        <p style="color: #ffd700; font-style: italic; font-size: 14px; margin-bottom: 15px;">
+          "Kreativitas Berkelanjutan, Desain Tanpa Batas"
+        </p>
+        <p style="color: #cccccc; font-size: 14px; line-height: 1.7; margin: 0;">
+          Halo! Saya menyambut Anda di ruang kerja digital saya. Di sini, setiap baris kode dan elemen visual dirancang
+          dengan ketelitian tinggi untuk menciptakan pengalaman web yang modern, interaktif, dan bermakna.
+        </p>
+      </div>
+
+      <!-- Kolom Foto di Kanan -->
+      <div style="text-align: center; flex-shrink: 0;">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbAGAN4a6YunS-hsVW9YzS9OmMUu7EQtLcBUGIH6e9ng&s=10"
+          alt="Foto Profil" class="photo-frame"
+          onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb'">
+        <p style="color: #ffffff; font-size: 15px; margin-top: 12px; font-weight: 600; letter-spacing: 0.5px;">Ahmad
+          Hamas</p>
+      </div>
+
+    </div>
+
+    <!-- KOTAK STATISTIK / FITUR MINI -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h4 style="color: #ffd700; margin: 0; font-size: 18px; font-weight: 700;">Semester 3</h4>
+        <p style="color: #999; margin: 5px 0 0 0; font-size: 13px;">Teknik Informatika</p>
+      </div>
+      <div class="stat-card">
+        <h4 style="color: #ffd700; margin: 0; font-size: 18px; font-weight: 700;">Proyek</h4>
+        <p style="color: #999; margin: 5px 0 0 0; font-size: 13px;">Pengembangan Web</p>
+      </div>
+      <div class="stat-card">
+        <h4 style="color: #ffd700; margin: 0; font-size: 18px; font-weight: 700;">Organisasi</h4>
+        <p style="color: #999; margin: 5px 0 0 0; font-size: 13px;">LBH CLPK</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT UNTUK MEMBUKA/MENUTUP MENU HP -->
+  <script>
+    function toggleSidebar() {
+      var sidebar = document.getElementById("mySidebar");
+      sidebar.classList.toggle("show");
+    }
+  </script>
+
+</body>
+
+</html>
