@@ -167,7 +167,7 @@
       color: var(--text-muted);
     }
 
-    /* Profile Layout Grid */
+    /* Profile Layout Grid Asli */
     .profile-grid {
       display: grid;
       grid-template-columns: 0.9fr 1.3fr;
@@ -181,21 +181,30 @@
       padding: 2rem;
       backdrop-filter: blur(12px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Khusus Kotak Kiri (Identitas & Foto) Dibuat Interaktif / Bisa Diklik */
+    .identity-card-interactive {
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.25rem;
       transition: all 0.3s ease;
     }
 
-    .card-box:hover {
+    .identity-card-interactive:hover {
       border-color: rgba(59, 130, 246, 0.5);
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
       background: var(--bg-card-hover);
     }
 
-    .card-box::after {
-      content: 'Klik Detail ↗';
+    .identity-card-interactive::after {
+      content: 'Klik untuk Detail & Zoom Foto ↗';
       position: absolute;
       bottom: 15px;
       right: 20px;
@@ -206,17 +215,8 @@
       transition: opacity 0.3s ease;
     }
 
-    .card-box:hover::after {
+    .identity-card-interactive:hover::after {
       opacity: 1;
-    }
-
-    /* Left Profile Identity Card */
-    .identity-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 1.25rem;
     }
 
     .profile-avatar-large {
@@ -233,6 +233,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .identity-card-interactive:hover .profile-avatar-large img {
+      transform: scale(1.08);
     }
 
     .identity-info h3 {
@@ -259,7 +264,7 @@
       width: 100%;
     }
 
-    /* Right Details Bio Section */
+    /* Kotak Kanan: Informasi Utama (Statis / Normal) */
     .details-card h3 {
       font-size: 1.25rem;
       font-weight: 700;
@@ -306,11 +311,7 @@
       font-weight: 600;
     }
 
-    /* Skill Bars Section */
-    .skills-section {
-      margin-top: 0;
-    }
-
+    /* Kotak Bawah: Keahlian & Kompetensi (Statis / Normal) */
     .skills-section h3 {
       font-size: 1.25rem;
       font-weight: 700;
@@ -349,12 +350,14 @@
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* MODAL / SLIDE PRESENTASI INTERAKTIF DENGAN ANIMASI BERGERAK */
+    /* MODAL / SLIDE PRESENTASI FOTO & DETAIL */
     .modal-overlay {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
+      width: 0;
+      /* Diubah lewat JS */
       width: 100%;
       height: 100%;
       background: rgba(7, 11, 20, 0.85);
@@ -362,19 +365,20 @@
       z-index: 1000;
       justify-content: center;
       align-items: center;
-      animation: fadeInOverlay 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInOverlay 0.3s ease;
     }
 
     .modal-container {
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
       border-radius: 1.75rem;
-      width: 700px;
+      width: 650px;
       max-width: 90%;
       padding: 2.5rem;
       position: relative;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
       animation: slideUpModal 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
     }
 
     .modal-close {
@@ -400,90 +404,74 @@
       color: white;
     }
 
-    /* Slide Konten dengan Animasi Masuk */
-    .slide-content {
-      display: none;
-      flex-direction: column;
-      gap: 1.25rem;
-      animation: fadeInSlide 0.4s ease;
+    /* Foto Profil Di Dalam Modal (Bisa di-zoom) */
+    .modal-avatar-zoom {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--accent-blue);
+      box-shadow: 0 0 35px var(--accent-glow);
+      margin: 0 auto 1.25rem auto;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
     }
 
-    .slide-content.active {
-      display: flex;
+    .modal-avatar-zoom img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-avatar-zoom:hover {
+      transform: scale(1.08);
     }
 
     .slide-title {
       font-size: 1.5rem;
       font-weight: 800;
       color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      margin-bottom: 0.25rem;
     }
 
-    .slide-title i {
+    .slide-subtitle {
+      font-size: 0.95rem;
       color: var(--accent-blue-light);
+      font-weight: 600;
+      margin-bottom: 1rem;
     }
 
     .slide-desc {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
       line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    /* Navigasi Slide (Next / Prev) */
-    .slide-nav-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    /* Lightbox Fullscreen untuk Zoom Foto */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      margin-top: 2rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .slide-btn {
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      color: var(--accent-blue-light);
-      padding: 0.6rem 1.25rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: inline-flex;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 2000;
+      justify-content: center;
       align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s ease;
+      cursor: zoom-out;
     }
 
-    .slide-btn:hover {
-      background: var(--accent-blue);
-      color: white;
-      box-shadow: 0 0 15px var(--accent-glow);
+    .lightbox-img {
+      max-width: 85%;
+      max-height: 85vh;
+      border-radius: 1rem;
+      border: 2px solid var(--accent-blue);
+      box-shadow: 0 0 50px var(--accent-glow);
     }
 
-    .slide-indicators {
-      display: flex;
-      gap: 0.4rem;
-    }
-
-    .indicator {
-      width: 8px;
-      height: 8px;
-      background: var(--border-color);
-      border-radius: 50%;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .indicator.active {
-      background: var(--accent-blue);
-      width: 22px;
-      border-radius: 4px;
-    }
-
-    /* KEYFRAMES ANIMASI BERGERAK AJAIB */
     @keyframes fadeInOverlay {
       from {
         opacity: 0;
@@ -503,18 +491,6 @@
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes fadeInSlide {
-      from {
-        opacity: 0;
-        transform: translateX(15px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0);
       }
     }
 
@@ -554,9 +530,7 @@
       </div>
       <ul class="nav-links">
         <li><a href="index.html"><i class="fa-solid fa-house-chimney"></i><span>Dashboard</span></a></li>
-        <!-- Sidebar Profil dipencet langsung membuka Slide Modal -->
-        <li><a href="#" onclick="openModal(1); return false;" class="active"><i
-              class="fa-solid fa-user-tie"></i><span>Profil</span></a></li>
+        <li><a href="profile.html" class="active"><i class="fa-solid fa-user-tie"></i><span>Profil</span></a></li>
         <li><a href="pengalaman.html"><i class="fa-solid fa-briefcase"></i><span>Pengalaman</span></a></li>
         <li><a href="pendidikan.html"><i class="fa-solid fa-graduation-cap"></i><span>Pendidikan</span></a></li>
         <li><a href="kontak.html"><i class="fa-solid fa-address-book"></i><span>Kontak</span></a></li>
@@ -573,16 +547,16 @@
     <div class="top-header">
       <div class="page-title">
         <h2>Profil Pribadi</h2>
-        <p>Klik pada kotak mana pun atau menu sidebar untuk membuka presentasi interaktif.</p>
+        <p>Klik pada kotak foto profil di sebelah kiri untuk melihat rincian dan memperbesar foto.</p>
       </div>
       <div></div>
     </div>
 
-    <!-- Layout Profil Grid (Ketiga Kotak Bisa Dipencet) -->
+    <!-- Layout Profil Grid Asli -->
     <div class="profile-grid">
 
-      <!-- Kotak 1: Kartu Identitas & Foto -->
-      <div class="card-box identity-card" onclick="openModal(1)">
+      <!-- Kotak Kiri: Kartu Identitas & Foto (INTERAKTIF / Bisa Dipencet) -->
+      <div class="card-box identity-card-interactive" onclick="openProfileModal()">
         <div class="profile-avatar-large">
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
             alt="Foto Profil Ahmad Hamas">
@@ -593,38 +567,43 @@
         </div>
         <div class="bio-short">
           <p><i class="fa-solid fa-quote-left" style="color: var(--accent-blue-light);"></i> Berkomitmen untuk terus
-            belajar, mengeksplorasi logika pemrograman, dan membangun sistem web yang fungsional.</p>
+            belajar, mengeksplorasi logika pemrograman, dan membangun sistem web yang fungsional serta elegan.</p>
         </div>
       </div>
 
-      <!-- Kotak 2: Detail Informasi Utama -->
-      <div class="card-box details-card" onclick="openModal(2)">
+      <!-- Kotak Kanan: Informasi Utama (STATIS / Normal) -->
+      <div class="card-box details-card">
         <h3><i class="fa-solid fa-id-card"></i> Informasi Utama</h3>
         <p class="bio-paragraph">
-          Mahasiswa Teknik Informatika yang memiliki ketertarikan tinggi pada pengembangan perangkat lunak, perancangan
-          sistem backend, serta eksplorasi teknologi informasi modern.
+          Halo! Saya adalah seorang mahasiswa Teknik Informatika yang memiliki ketertarikan tinggi pada pengembangan
+          perangkat lunak, perancangan sistem backend, serta eksplorasi teknologi informasi modern. Saya terbiasa
+          bekerja secara terstruktur, teliti, dan menyukai pendekatan praktis dalam menyelesaikan tantangan ngoding.
         </p>
 
         <div class="info-table">
+          <div class="info-row">
+            <span class="info-label">Nama Lengkap</span>
+            <span class="info-value">Ahmad Hamas 'Adil Al-Qossam</span>
+          </div>
           <div class="info-row">
             <span class="info-label">Tempat, Tanggal Lahir</span>
             <span class="info-value">Cilegon, 6 Juni 2006</span>
           </div>
           <div class="info-row">
-            <span class="info-label">Domisili</span>
-            <span class="info-value">Cilegon, Indonesia</span>
+            <span class="info-label">Status Akademik</span>
+            <span class="info-value">Mahasiswa Teknik Informatika</span>
           </div>
           <div class="info-row">
-            <span class="info-label">Minat Utama</span>
-            <span class="info-value">Backend Development</span>
+            <span class="info-label">Domisili</span>
+            <span class="info-value">Cilegon, Indonesia</span>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- Kotak 3: Keahlian & Kompetensi Teknis (Bisa Dipencet) -->
-    <div class="card-box skills-section" onclick="openModal(3)">
+    <!-- Kotak Bawah: Keahlian & Kompetensi Teknis (STATIS / Normal & Rapi) -->
+    <div class="card-box skills-section">
       <h3><i class="fa-solid fa-code-branch"></i> Keahlian & Kompetensi Teknis</h3>
 
       <div class="skill-item">
@@ -656,119 +635,69 @@
           <div class="skill-progress" style="width: 85%;"></div>
         </div>
       </div>
+
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Logika Pemrograman & Algoritma</span>
+          <span>90%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 90%;"></div>
+        </div>
+      </div>
     </div>
   </main>
 
-  <!-- MODAL PRESENTASI INTERAKTIF DENGAN ANIMASI -->
-  <div class="modal-overlay" id="presentationModal" onclick="handleOverlayClick(event)">
+  <!-- MODAL DETAIL PROFIL & ZOOM FOTO -->
+  <div class="modal-overlay" id="profileModal" onclick="handleOverlayClick(event)">
     <div class="modal-container">
-      <div class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
+      <div class="modal-close" onclick="closeProfileModal()"><i class="fa-solid fa-xmark"></i></div>
 
-      <!-- Slide 1: Identitas -->
-      <div class="slide-content" id="slide-1">
-        <div class="slide-title"><i class="fa-solid fa-user-tie"></i> 1. Identitas & Visi Pribadi</div>
-        <p class="slide-desc">
-          <strong>Ahmad Hamas 'Adil Al-Qossam</strong>[cite: 1] — Lahir di Cilegon pada tanggal 6 Juni 2006[cite: 1].
-          Mengambil studi di bidang Teknik Informatika[cite: 1] dengan dedikasi tinggi terhadap pengembangan sistem
-          digital yang bersih dan berstandar gentlemen.
-        </p>
-        <div
-          style="background: rgba(59, 130, 246, 0.08); border-left: 3px solid var(--accent-blue); padding: 1rem; border-radius: 0.5rem; margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-main);">
-          <em>"Kreativitas Berkelanjutan, Desain Tanpa Batas"</em>
-        </div>
+      <!-- Foto di dalam modal yang bisa di-zoom/perbesar -->
+      <div class="modal-avatar-zoom" onclick="openLightbox(event)" title="Klik untuk memperbesar foto secara penuh">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
+          alt="Zoom Foto Profil">
       </div>
 
-      <!-- Slide 2: Informasi Akademik & Detail -->
-      <div class="slide-content" id="slide-2">
-        <div class="slide-title"><i class="fa-solid fa-id-card"></i> 2. Rincian Akademik & Domisili</div>
-        <p class="slide-desc">
-          Aktif menempuh perkuliahan di wilayah Cilegon, Banten, Indonesia[cite: 1]. Terbiasa mendalami arsitektur
-          komputer, struktur jaringan, serta pemrograman berorientasi objek secara terstruktur dan profesional.
-        </p>
-        <div style="font-size: 0.9rem; color: var(--accent-blue-light); font-weight: 600; margin-top: 0.5rem;">
-          <i class="fa-solid fa-check-circle"></i> Status: Mahasiswa Aktif Teknik Informatika[cite: 1]
-        </div>
-      </div>
-
-      <!-- Slide 3: Keahlian & Kompetensi -->
-      <div class="slide-content" id="slide-3">
-        <div class="slide-title"><i class="fa-solid fa-code-branch"></i> 3. Kompetensi Teknis & Stack</div>
-        <p class="slide-desc">
-          Menguasai berbagai perangkat pengembangan perangkat lunak modern, mulai dari antarmuka web interaktif hingga
-          perancangan backend server dan basis data relasional.
-        </p>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
-          <span
-            style="background: rgba(59,130,246,0.15); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; color: var(--accent-blue-light); border: 1px solid rgba(59,130,246,0.3);">Node.js</span>
-          <span
-            style="background: rgba(59,130,246,0.15); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; color: var(--accent-blue-light); border: 1px solid rgba(59,130,246,0.3);">SQLite</span>
-          <span
-            style="background: rgba(59,130,246,0.15); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; color: var(--accent-blue-light); border: 1px solid rgba(59,130,246,0.3);">Git
-            & GitHub</span>
-          <span
-            style="background: rgba(59,130,246,0.15); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; color: var(--accent-blue-light); border: 1px solid rgba(59,130,246,0.3);">HTML
-            / CSS</span>
-        </div>
-      </div>
-
-      <!-- Tombol Navigasi Slide & Indikator -->
-      <div class="slide-nav-row">
-        <button class="slide-btn" onclick="changeSlide(-1)"><i class="fa-solid fa-arrow-left"></i> Sebelumnya</button>
-
-        <div class="slide-indicators">
-          <div class="indicator" id="ind-1" onclick="goToSlide(1)"></div>
-          <div class="indicator" id="ind-2" onclick="goToSlide(2)"></div>
-          <div class="indicator" id="ind-3" onclick="goToSlide(3)"></div>
-        </div>
-
-        <button class="slide-btn" onclick="changeSlide(1)">Selanjutnya <i class="fa-solid fa-arrow-right"></i></button>
-      </div>
+      <div class="slide-title">Ahmad Hamas 'Adil Al-Qossam</div>
+      <div class="slide-subtitle">Informatics Engineering Student</div>
+      <p class="slide-desc">
+        Mahasiswa aktif Teknik Informatika di Cilegon[cite: 1]. Berdedikasi tinggi dalam pengembangan sistem digital,
+        arsitektur backend, dan eksplorasi teknologi modern. <br><br>
+        <em>(Tips: Klik pada foto di atas jika ingin melihat tampilan foto secara penuh / fullscreen).</em>
+      </p>
     </div>
   </div>
 
-  <!-- SCRIPT INTERAKTIF ANIMASI SLIDE -->
-  <script>
-    let currentSlide = 1;
-    const totalSlides = 3;
+  <!-- LIGHTBOX FULLSCREEN ZOOM FOTO -->
+  <div class="lightbox-overlay" id="lightboxModal" onclick="closeLightbox()">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop"
+      alt="Fullscreen Foto" class="lightbox-img">
+  </div>
 
-    function openModal(slideNum) {
-      currentSlide = slideNum;
-      document.getElementById('presentationModal').style.display = 'flex';
-      showSlide(currentSlide);
+  <!-- SCRIPT INTERAKTIF -->
+  <script>
+    function openProfileModal() {
+      document.getElementById('profileModal').style.display = 'flex';
     }
 
-    function closeModal() {
-      document.getElementById('presentationModal').style.display = 'none';
+    function closeProfileModal() {
+      document.getElementById('profileModal').style.display = 'none';
     }
 
     function handleOverlayClick(event) {
-      if (event.target === document.getElementById('presentationModal')) {
-        closeModal();
+      if (event.target === document.getElementById('profileModal')) {
+        closeProfileModal();
       }
     }
 
-    function changeSlide(direction) {
-      currentSlide += direction;
-      if (currentSlide > totalSlides) {
-        currentSlide = 1;
-      } else if (currentSlide < 1) {
-        currentSlide = totalSlides;
-      }
-      showSlide(currentSlide);
+    function openLightbox(event) {
+      event.stopPropagation(); // Mencegah modal tertutup
+      document.getElementById('lightboxModal').style.display = 'flex';
     }
 
-    function goToSlide(n) {
-      currentSlide = n;
-      showSlide(currentSlide);
-    }
-
-    function showSlide(n) {
-      for (let i = 1; i <= totalSlides; i++) {
-        document.getElementById(`slide-${i}`).classList.remove('active');
-        document.getElementById(`ind-${i}`).classList.remove('active');
-      }
-      document.getElementById(`slide-${n}`).classList.add('active');
-      document.getElementById(`ind-${n}`).classList.add('active');
+    function closeLightbox() {
+      document.getElementById('lightboxModal').style.display = 'none';
     }
   </script>
 </body>
