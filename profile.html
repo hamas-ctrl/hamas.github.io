@@ -2,279 +2,504 @@
 <html lang="id">
 
 <head>
-  <link rel="icon" type="image/jpeg"
-    href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMfoUARq_fms1tTT9UMAZaMbPrhExDQs0vM6obujr2Aw&s=10">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profil Lengkap - Ahmad Hamas</title>
-  <!-- W3.CSS Framework -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <!-- Google Fonts (Poppins) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Profil - Ahmad Hamas | Portofolio Eksklusif</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    /* TOMBOL HAMBURGER (GARIS TIGA) - HANYA MUNCUL DI HP */
-    .mobile-topbar {
-      display: none;
-      background-color: #111;
-      color: #ffd700;
-      padding: 15px 20px;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #222;
-      position: sticky;
-      top: 0;
-      z-index: 1001;
+    :root {
+      --bg-primary: #070b14;
+      --bg-secondary: #0d1322;
+      --bg-card: rgba(19, 29, 49, 0.75);
+      --bg-card-hover: rgba(26, 39, 68, 0.9);
+      --accent-blue: #3b82f6;
+      --accent-blue-light: #60a5fa;
+      --accent-glow: rgba(59, 130, 246, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(51, 65, 85, 0.45);
     }
 
-    .hamburger-btn {
-      background: none;
-      border: 2px solid #ffd700;
-      color: #ffd700;
-      font-size: 20px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      cursor: pointer;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    @media screen and (max-width: 768px) {
-      .mobile-topbar {
-        display: flex !important;
-      }
-
-      /* Sidebar disembunyikan dulu secara default di HP */
-      .sidebar-custom {
-        display: none !important;
-        width: 100% !important;
-        height: auto !important;
-        position: relative !important;
-        box-shadow: none !important;
-        border-right: none !important;
-        border-bottom: 1px solid #eaeaea;
-      }
-
-      /* Kelas untuk menampilkan sidebar saat tombol diklik */
-      .sidebar-custom.show {
-        display: block !important;
-      }
-
-      .main-content {
-        margin-left: 0 !important;
-        padding: 20px !important;
-      }
-
-      .data-row {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-      }
-
-      .data-label {
-        width: 100% !important;
-        margin-bottom: 4px;
-      }
-    }
-
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: 'Poppins', sans-serif;
-    }
-
-    /* SIDEBAR PUTIH ELEGAN DI KIRI (4 MENU) */
-    .sidebar-custom {
-      width: 25%;
-      background-color: #ffffff;
-      color: #000000;
-      position: fixed;
-      height: 100%;
-      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.06);
-      border-right: 1px solid #eaeaea;
-      z-index: 1000;
-    }
-
-    /* Logo / Header Sidebar */
-    .sidebar-header {
-      padding: 30px 20px;
-      background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
-      border-bottom: 1px solid #eee;
-    }
-
-    /* Gaya Menu Item Sidebar */
-    .sidebar-custom .w3-button {
-      text-align: left;
-      display: block;
-      width: 100%;
-      padding: 16px 20px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #444;
-      transition: all 0.3s ease;
-      border-left: 4px solid transparent;
-    }
-
-    .sidebar-custom .w3-button:hover {
-      background-color: #fff9e6 !important;
-      color: #b8860b !important;
-      padding-left: 26px !important;
-      border-left: 4px solid #ffd700;
-    }
-
-    /* Indikator Menu Aktif di Profile */
-    .menu-aktif {
-      background-color: #fff8e1 !important;
-      color: #b8860b !important;
-      font-weight: 600;
-      border-left: 4px solid #ffd700 !important;
-    }
-
-    /* KONTEN UTAMA HITAM & EMAS DI KANAN */
-    .main-content {
-      margin-left: 25%;
-      background-color: #0b0b0b;
-      color: #ffd700;
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
       min-height: 100vh;
-      padding: 40px;
+      display: flex;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 10% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 40%);
     }
 
-    /* Kartu Profil Utama dengan Aksen Emas */
-    .profile-card {
-      background: linear-gradient(135deg, #161616 0%, #111111 100%);
-      border: 1px solid #262626;
-      border-radius: 16px;
-      padding: 35px;
-      margin-top: 25px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      position: relative;
+    /* Sidebar Navigasi */
+    aside {
+      width: 270px;
+      background-color: var(--bg-secondary);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.5rem 1.5rem;
+      position: fixed;
+      height: 100vh;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: 0.5px;
+      padding-left: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
+    }
+
+    .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.15rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-radius: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      transform: translateX(4px);
+    }
+
+    .nav-links li a.active {
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      border: none;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .nav-links li a i {
+      font-size: 1.1rem;
+      width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-footer {
+      background: rgba(13, 19, 34, 0.6);
+      border: 1px solid var(--border-color);
+      padding: 0.85rem;
+      border-radius: 0.85rem;
+      text-align: center;
+    }
+
+    .sidebar-footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Main Content Layout */
+    main {
+      margin-left: 270px;
+      flex: 1;
+      padding: 2.5rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      max-width: 1450px;
+    }
+
+    /* Top Header Bar */
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .page-title h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .page-title p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .user-badge-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 1.1rem;
+      border-radius: 50px;
+      backdrop-filter: blur(8px);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+    }
+
+    /* Profile Layout Grid */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.3fr;
+      gap: 1.75rem;
+    }
+
+    .card-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Left Profile Identity Card */
+    .identity-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.25rem;
+    }
+
+    .profile-avatar-large {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--accent-blue);
+      box-shadow: 0 0 30px var(--accent-glow);
+      background: var(--bg-secondary);
+    }
+
+    .profile-avatar-large img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .identity-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+
+    .identity-info p {
+      color: var(--accent-blue-light);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .bio-short {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      text-align: left;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1rem;
+      width: 100%;
+    }
+
+    /* Right Details Bio Section */
+    .details-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .details-card h3 i {
+      color: var(--accent-blue-light);
+    }
+
+    .bio-paragraph {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-table {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+
+    .info-label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .info-value {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Skill Bars Section */
+    .skills-section {
+      margin-top: 2rem;
+    }
+
+    .skills-section h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .skill-item {
+      margin-bottom: 1rem;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: #ffffff;
+    }
+
+    .skill-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(51, 65, 85, 0.3);
+      border-radius: 4px;
       overflow: hidden;
     }
 
-    .profile-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, #ffd700, #ffaa00);
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(135deg, var(--accent-blue), #60a5fa);
+      border-radius: 4px;
+      box-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* Baris Data Diri */
-    .data-row {
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #222;
-      padding: 16px 0;
-      transition: background 0.2s;
-    }
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      aside {
+        width: 85px;
+        padding: 2rem 0.75rem;
+      }
 
-    .data-row:hover {
-      background-color: rgba(255, 215, 0, 0.02);
-      padding-left: 10px;
-      padding-right: 10px;
-      border-radius: 8px;
-    }
+      .logo-area span,
+      .nav-links span,
+      .sidebar-footer {
+        display: none;
+      }
 
-    .data-label {
-      width: 220px;
-      color: #999999;
-      font-weight: 500;
-      font-size: 14px;
-    }
+      main {
+        margin-left: 85px;
+        padding: 2rem 1.5rem;
+      }
 
-    .data-value {
-      flex: 1;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 500;
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
-<body style="margin: 0; background-color: #0b0b0b;">
+<body>
 
-  <!-- TOPBAR KHUSUS HP (DENGAN TOMBOL GARIS TIGA) -->
-  <div class="mobile-topbar">
-    <span style="font-weight: 700; font-size: 16px;">MY PROFILE</span>
-    <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
-  </div>
+  <!-- Sidebar Navigasi -->
+  <aside>
+    <div>
+      <div class="logo-area">
+        <div class="logo-icon"><i class="fa-solid fa-gem"></i></div>
+        <span>PORTFOLIO</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fa-solid fa-house-chimney"></i><span>Dashboard</span></a></li>
+        <li><a href="profile.html" class="active"><i class="fa-solid fa-user-tie"></i><span>Profil</span></a></li>
+        <li><a href="pengalaman.html"><i class="fa-solid fa-briefcase"></i><span>Pengalaman</span></a></li>
+        <li><a href="pendidikan.html"><i class="fa-solid fa-graduation-cap"></i><span>Pendidikan</span></a></li>
+        <li><a href="kontak.html"><i class="fa-solid fa-address-book"></i><span>Kontak</span></a></li>
+      </ul>
+    </div>
+    <div class="sidebar-footer">
+      <p>&copy; 2026 Midnight Royal</p>
+    </div>
+  </aside>
 
-  <!-- SIDEBAR PUTIH DENGAN 4 MENU -->
-  <div class="sidebar-custom" id="mySidebar">
-    <div class="sidebar-header">
-      <h4 style="margin: 0; font-weight: 700; color: #111; letter-spacing: 0.5px;"><b>MY PROFILE</b></h4>
-      <p style="font-size: 11px; color: #777; margin: 4px 0 0 0;">Web Design Project</p>
+  <!-- Konten Utama -->
+  <main>
+    <!-- Top Header Bar -->
+    <div class="top-header">
+      <div class="page-title">
+        <h2>Profil Pribadi</h2>
+        <p>Informasi mendalam mengenai identitas, latar belakang, dan keahlian.</p>
+      </div>
+      <div class="user-badge-top">
+        <div class="status-dot"></div>
+        <span style="font-size: 0.85rem; font-weight: 600;">Verified Profile</span>
+      </div>
     </div>
 
-    <div style="padding-top: 15px;">
-      <a href="index.html" class="w3-bar-item w3-button" style="text-decoration: none; color: #333;">🏠 &nbsp;
-        Beranda</a>
-      <a href="profile.html" class="w3-bar-item w3-button menu-aktif" style="text-decoration: none;">👤 &nbsp;
-        Profile</a>
-      <a href="proyek.html" class="w3-bar-item w3-button" style="text-decoration: none; color: #333;">💼 &nbsp;
-        Proyek</a>
-      <a href="kontak.html" class="w3-bar-item w3-button" style="text-decoration: none; color: #333;">📞 &nbsp;
-        Kontak</a>
-    </div>
-  </div>
+    <!-- Layout Profil Grid -->
+    <div class="profile-grid">
 
-  <!-- KONTEN UTAMA PROFIL -->
-  <div class="main-content">
-    <div style="border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 20px;">
-      <h2 style="color: #ffd700; margin: 0; font-weight: 700; font-size: 26px;"><b>Profil Lengkap</b></h2>
-      <p style="color: #888; margin: 5px 0 0 0; font-size: 14px;">Informasi rinci data diri dan identitas akademik.</p>
-    </div>
-
-    <!-- KOTAK INFORMASI DATA DIRI -->
-    <div class="profile-card">
-      <h3
-        style="color: #ffd700; margin-top: 0; border-bottom: 2px solid #222; padding-bottom: 15px; font-size: 18px; font-weight: 600;">
-        ✨ <b>Identitas Pribadi & Akademik</b>
-      </h3>
-
-      <!-- Baris Data 1 -->
-      <div class="data-row">
-        <div class="data-label">Nama Lengkap</div>
-        <div class="data-value" style="color: #ffd700; font-weight: 600;">Ahmad Hamas 'Adil Al-Qossam</div>
+      <!-- Kolom Kiri: Kartu Identitas & Foto -->
+      <div class="card-box identity-card">
+        <div class="profile-avatar-large">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
+            alt="Foto Profil Ahmad Hamas">
+        </div>
+        <div class="identity-info">
+          <h3>Ahmad Hamas 'Adil Al-Qossam</h3>
+          <p>Informatics Engineering Student</p>
+        </div>
+        <div class="bio-short">
+          <p><i class="fa-solid fa-quote-left" style="color: var(--accent-blue-light);"></i> Berkomitmen untuk terus
+            belajar, mengeksplorasi logika pemrograman, dan membangun sistem web yang fungsional serta elegan.</p>
+        </div>
       </div>
 
-      <!-- Baris Data 2 -->
-      <div class="data-row">
-        <div class="data-label">Tempat, Tanggal Lahir</div>
-        <div class="data-value">Cilegon, 06 Juni 2006</div>
-      </div>
+      <!-- Kolom Kanan: Detail Informasi & Bio Akademik -->
+      <div class="card-box details-card">
+        <h3><i class="fa-solid fa-id-card"></i> Informasi Utama</h3>
+        <p class="bio-paragraph">
+          Halo! Saya adalah seorang mahasiswa Teknik Informatika yang memiliki ketertarikan tinggi pada pengembangan
+          perangkat lunak, perancangan sistem backend, serta eksplorasi teknologi informasi modern. Saya terbiasa
+          bekerja secara terstruktur, teliti, dan menyukai pendekatan praktis dalam menyelesaikan tantangan ngoding.
+        </p>
 
-      <!-- Baris Data 3 -->
-      <div class="data-row">
-        <div class="data-label">Alamat Asal (KTP)</div>
-        <div class="data-value">Perum GCD Blok E6 No 3, Cilegon</div>
-      </div>
-
-      <!-- Baris Data 4 -->
-      <div class="data-row">
-        <div class="data-label">Pekerjaan / Status</div>
-        <div class="data-value">CEO & Mahasiswa Teknik Informatika</div>
-      </div>
-
-      <!-- Baris Data 5 -->
-      <div class="data-row" style="border-bottom: none;">
-        <div class="data-label">Pendidikan</div>
-        <div class="data-value">STTIKOM Insan Unggul (Kelas TI25R1)</div>
+        <div class="info-table">
+          <div class="info-row">
+            <span class="info-label">Nama Lengkap</span>
+            <span class="info-value">Ahmad Hamas 'Adil Al-Qossam</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Tempat, Tanggal Lahir</span>
+            <span class="info-value">Cilegon, 6 Juni 2006</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Status Akademik</span>
+            <span class="info-value">Mahasiswa Teknik Informatika</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Domisili</span>
+            <span class="info-value">Cilegon, Indonesia</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Minat Utama</span>
+            <span class="info-value">Backend Development & Web Systems</span>
+          </div>
+        </div>
       </div>
 
     </div>
 
-  </div>
+    <!-- Bagian Keahlian (Skills Progress) -->
+    <div class="card-box skills-section">
+      <h3><i class="fa-solid fa-code-branch"></i> Keahlian & Kompetensi Teknis</h3>
 
-  <!-- JAVASCRIPT UNTUK MEMBUKA/MENUTUP MENU HP -->
-  <script>
-    function toggleSidebar() {
-      var sidebar = document.getElementById("mySidebar");
-      sidebar.classList.toggle("show");
-    }
-  </script>
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Pemrograman Web (HTML / CSS / JavaScript)</span>
+          <span>88%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 88%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Backend Development (Node.js & Database)</span>
+          <span>82%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 82%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Kontrol Versi (Git & GitHub)</span>
+          <span>85%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 85%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Logika Pemrograman & Algoritma</span>
+          <span>90%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 90%;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
 
 </body>
 
