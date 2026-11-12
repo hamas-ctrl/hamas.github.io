@@ -143,7 +143,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.75rem;
-      max-width: 1450px;
+      max-width: 1400px;
     }
 
     /* Top Header Bar */
@@ -167,54 +167,75 @@
       color: var(--text-muted);
     }
 
-    /* Education Grid Container */
-    .edu-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    /* VERTICAL TIMELINE STYLING */
+    .timeline-container {
+      position: relative;
+      max-width: 900px;
+      margin: 1rem 0;
+      padding-left: 2.5rem;
     }
 
-    .edu-card {
+    /* Garis Vertikal Utama */
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 10px;
+      bottom: 10px;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--accent-blue), rgba(59, 130, 246, 0.2));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    /* Titik Node / Badge di Garis */
+    .timeline-node {
+      position: absolute;
+      left: -2.5rem;
+      top: 1.5rem;
+      width: 24px;
+      height: 24px;
+      background: var(--bg-primary);
+      border: 3px solid var(--accent-blue);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .timeline-node::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent-blue-light);
+      border-radius: 50%;
+    }
+
+    /* Card Konten Linimasa */
+    .timeline-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 1.5rem;
-      padding: 2rem;
+      border-radius: 1.25rem;
+      padding: 1.75rem;
       backdrop-filter: blur(12px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      display: flex;
-      gap: 1.5rem;
       transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
     }
 
-    .edu-card:hover {
+    .timeline-card:hover {
       border-color: rgba(59, 130, 246, 0.5);
       transform: translateY(-3px);
       box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
       background: var(--bg-card-hover);
     }
 
-    .edu-icon-box {
-      width: 60px;
-      height: 60px;
-      background: rgba(59, 130, 246, 0.12);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      border-radius: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-blue-light);
-      font-size: 1.5rem;
-      flex-shrink: 0;
-      box-shadow: 0 0 15px var(--accent-glow);
-    }
-
-    .edu-details {
-      flex: 1;
-    }
-
-    .edu-header-row {
+    .timeline-header-row {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -223,49 +244,50 @@
       gap: 0.5rem;
     }
 
-    .edu-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    .edu-badge {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34d399;
-      padding: 0.3rem 0.85rem;
+    .timeline-year {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--accent-blue-light);
+      padding: 0.25rem 0.8rem;
       border-radius: 50px;
       font-size: 0.78rem;
       font-weight: 600;
     }
 
-    .edu-institution {
+    .timeline-institution {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-degree {
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--accent-blue-light);
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
 
-    .edu-desc {
-      font-size: 0.92rem;
+    .timeline-desc {
+      font-size: 0.9rem;
       color: var(--text-muted);
-      line-height: 1.7;
+      line-height: 1.6;
       margin-bottom: 1rem;
     }
 
-    .edu-highlights {
+    .timeline-tags {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
     }
 
-    .edu-tag {
-      background: rgba(59, 130, 246, 0.08);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      color: var(--accent-blue-light);
-      padding: 0.25rem 0.75rem;
+    .timeline-tag {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.25rem 0.65rem;
       border-radius: 6px;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 500;
     }
 
@@ -285,11 +307,6 @@
       main {
         margin-left: 85px;
         padding: 2rem 1.5rem;
-      }
-
-      .edu-card {
-        flex-direction: column;
-        gap: 1rem;
       }
     }
   </style>
@@ -324,58 +341,85 @@
     <div class="top-header">
       <div class="page-title">
         <h2>Riwayat Pendidikan</h2>
-        <p>Dokumentasi runtutan jenjang akademik dan studi formal.</p>
+        <p>Alur perjalanan akademik secara kronologis dari perguruan tinggi hingga sekolah dasar.</p>
       </div>
       <div></div>
     </div>
 
-    <!-- Runtutan Pendidikan (Cards Container) -->
-    <div class="edu-container">
+    <!-- Vertikal Linimasa Pendidikan -->
+    <div class="timeline-container">
 
-      <!-- Pendidikan Tinggi -->
-      <div class="edu-card">
-        <div class="edu-icon-box">
-          <i class="fa-solid fa-graduation-cap"></i>
-        </div>
-        <div class="edu-details">
-          <div class="edu-header-row">
-            <div class="edu-title">Sarjana - Teknik Informatika</div>
-            <div class="edu-badge">Sedang Ditempuh</div>
+      <!-- 1. Perguruan Tinggi (S1) -->
+      <div class="timeline-item">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-header-row">
+            <div class="timeline-institution">[ketik disini data anda]</div>
+            <div class="timeline-year">[2025 - Sekarang]</div>
           </div>
-          <div class="edu-institution">STTIKOM Insan Unggul</div>
-          <div class="edu-desc">
-            Menempuh pendidikan tinggi di bidang Teknik Informatika dengan fokus pendalaman ilmu komputer, arsitektur
-            sistem, struktur data, serta pemrograman berorientasi objek.
+          <div class="timeline-degree">S1 - Teknik Informatika</div>
+          <div class="timeline-desc">
+            [ketik disini data anda]
           </div>
-          <div class="edu-highlights">
-            <span class="edu-tag">Struktur Data & Algoritma</span>
-            <span class="edu-tag">Sistem Operasi</span>
-            <span class="edu-tag">Pemrograman Berorientasi Objek</span>
-            <span class="edu-tag">Manajemen Basis Data</span>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Struktur Data</span>
+            <span class="timeline-tag">Pemrograman</span>
+            <span class="timeline-tag">Sistem Informasi</span>
           </div>
         </div>
       </div>
 
-      <!-- Pendidikan Menengah / Kejuruan (Placeholder Runtutan) -->
-      <div class="edu-card">
-        <div class="edu-icon-box">
-          <i class="fa-solid fa-school"></i>
+      <!-- 2. Sekolah Menengah Atas (SMA / Sederajat) -->
+      <div class="timeline-item">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-header-row">
+            <div class="timeline-institution">[ketik disini data anda]</div>
+            <div class="timeline-year">[ketik disini tahun anda]</div>
+          </div>
+          <div class="timeline-degree">Sekolah Menengah Atas / Sederajat</div>
+          <div class="timeline-desc">
+            [ketik disini data anda]
+          </div>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Pendidikan Menengah</span>
+            <span class="timeline-tag">Ekstrakurikuler</span>
+          </div>
         </div>
-        <div class="edu-details">
-          <div class="edu-header-row">
-            <div class="edu-title">Pendidikan Menengah Atas / Sederajat</div>
-            <div class="edu-badge"
-              style="background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.3); color: var(--accent-blue-light);">
-              Lulus</div>
+      </div>
+
+      <!-- 3. Sekolah Menengah Pertama (SMP) -->
+      <div class="timeline-item">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-header-row">
+            <div class="timeline-institution">[ketik disini data anda]</div>
+            <div class="timeline-year">[ketik disini tahun anda]</div>
           </div>
-          <div class="edu-institution">Sekolah Menengah Atas / Kejuruan</div>
-          <div class="edu-desc">
-            Menyelesaikan pendidikan dasar dan menengah dengan penguatan dasar-dasar ilmu pengetahuan, logika berpikir,
-            serta ketertarikan awal pada dunia teknologi informasi.
+          <div class="timeline-degree">Sekolah Menengah Pertama (SMP)</div>
+          <div class="timeline-desc">
+            [ketik disini data anda]
           </div>
-          <div class="edu-highlights">
-            <span class="edu-tag">Pendidikan Formal</span>
-            <span class="edu-tag">Pengembangan Logika</span>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Pendidikan Dasar Lanjutan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Sekolah Dasar (SD) -->
+      <div class="timeline-item">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-header-row">
+            <div class="timeline-institution">[ketik disini data anda]</div>
+            <div class="timeline-year">[ketik disini tahun anda]</div>
+          </div>
+          <div class="timeline-degree">Sekolah Dasar (SD)</div>
+          <div class="timeline-desc">
+            [ketik disini data anda]
+          </div>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Pendidikan Dasar</span>
           </div>
         </div>
       </div>
