@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendidikan - Ahmad Hamas | Portofolio Eksklusif</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-primary: #070b14;
+      --bg-secondary: #0d1322;
+      --bg-card: rgba(19, 29, 49, 0.75);
+      --bg-card-hover: rgba(26, 39, 68, 0.9);
+      --accent-blue: #3b82f6;
+      --accent-blue-light: #60a5fa;
+      --accent-glow: rgba(59, 130, 246, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(51, 65, 85, 0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 10% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 40%);
+    }
+
+    /* Sidebar Navigasi */
+    aside {
+      width: 270px;
+      background-color: var(--bg-secondary);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.5rem 1.5rem;
+      position: fixed;
+      height: 100vh;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: 0.5px;
+      padding-left: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
+    }
+
+    .nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.15rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-radius: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      transform: translateX(4px);
+    }
+
+    .nav-links li a.active {
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      border: none;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .nav-links li a i {
+      font-size: 1.1rem;
+      width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-footer {
+      background: rgba(13, 19, 34, 0.6);
+      border: 1px solid var(--border-color);
+      padding: 0.85rem;
+      border-radius: 0.85rem;
+      text-align: center;
+    }
+
+    .sidebar-footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Main Content Layout */
+    main {
+      margin-left: 270px;
+      flex: 1;
+      padding: 2.5rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      max-width: 1450px;
+    }
+
+    /* Top Header Bar */
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      min-height: 50px;
+    }
+
+    .page-title h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .page-title p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Education Grid Container */
+    .edu-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      display: flex;
+      gap: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .edu-card:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
+      background: var(--bg-card-hover);
+    }
+
+    .edu-icon-box {
+      width: 60px;
+      height: 60px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-blue-light);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .edu-details {
+      flex: 1;
+    }
+
+    .edu-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .edu-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .edu-badge {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      padding: 0.3rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .edu-institution {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent-blue-light);
+      margin-bottom: 1rem;
+    }
+
+    .edu-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .edu-highlights {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .edu-tag {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: var(--accent-blue-light);
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      aside {
+        width: 85px;
+        padding: 2rem 0.75rem;
+      }
+
+      .logo-area span,
+      .nav-links span,
+      .sidebar-footer {
+        display: none;
+      }
+
+      main {
+        margin-left: 85px;
+        padding: 2rem 1.5rem;
+      }
+
+      .edu-card {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar Navigasi -->
+  <aside>
+    <div>
+      <div class="logo-area">
+        <div class="logo-icon"><i class="fa-solid fa-gem"></i></div>
+        <span>PORTFOLIO</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fa-solid fa-house-chimney"></i><span>Dashboard</span></a></li>
+        <li><a href="profile.html"><i class="fa-solid fa-user-tie"></i><span>Profil</span></a></li>
+        <li><a href="pengalaman.html"><i class="fa-solid fa-briefcase"></i><span>Pengalaman</span></a></li>
+        <li><a href="pendidikan.html" class="active"><i
+              class="fa-solid fa-graduation-cap"></i><span>Pendidikan</span></a></li>
+        <li><a href="kontak.html"><i class="fa-solid fa-address-book"></i><span>Kontak</span></a></li>
+      </ul>
+    </div>
+    <div class="sidebar-footer">
+      <p>&copy; 2026 Midnight Royal</p>
+    </div>
+  </aside>
+
+  <!-- Konten Utama -->
+  <main>
+    <!-- Top Header Bar -->
+    <div class="top-header">
+      <div class="page-title">
+        <h2>Riwayat Pendidikan</h2>
+        <p>Dokumentasi runtutan jenjang akademik dan studi formal.</p>
+      </div>
+      <div></div>
+    </div>
+
+    <!-- Runtutan Pendidikan (Cards Container) -->
+    <div class="edu-container">
+
+      <!-- Pendidikan Tinggi -->
+      <div class="edu-card">
+        <div class="edu-icon-box">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="edu-details">
+          <div class="edu-header-row">
+            <div class="edu-title">Sarjana - Teknik Informatika</div>
+            <div class="edu-badge">Sedang Ditempuh</div>
+          </div>
+          <div class="edu-institution">STTIKOM Insan Unggul</div>
+          <div class="edu-desc">
+            Menempuh pendidikan tinggi di bidang Teknik Informatika dengan fokus pendalaman ilmu komputer, arsitektur
+            sistem, struktur data, serta pemrograman berorientasi objek.
+          </div>
+          <div class="edu-highlights">
+            <span class="edu-tag">Struktur Data & Algoritma</span>
+            <span class="edu-tag">Sistem Operasi</span>
+            <span class="edu-tag">Pemrograman Berorientasi Objek</span>
+            <span class="edu-tag">Manajemen Basis Data</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pendidikan Menengah / Kejuruan (Placeholder Runtutan) -->
+      <div class="edu-card">
+        <div class="edu-icon-box">
+          <i class="fa-solid fa-school"></i>
+        </div>
+        <div class="edu-details">
+          <div class="edu-header-row">
+            <div class="edu-title">Pendidikan Menengah Atas / Sederajat</div>
+            <div class="edu-badge"
+              style="background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.3); color: var(--accent-blue-light);">
+              Lulus</div>
+          </div>
+          <div class="edu-institution">Sekolah Menengah Atas / Kejuruan</div>
+          <div class="edu-desc">
+            Menyelesaikan pendidikan dasar dan menengah dengan penguatan dasar-dasar ilmu pengetahuan, logika berpikir,
+            serta ketertarikan awal pada dunia teknologi informasi.
+          </div>
+          <div class="edu-highlights">
+            <span class="edu-tag">Pendidikan Formal</span>
+            <span class="edu-tag">Pengembangan Logika</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+
+</html>
