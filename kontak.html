@@ -195,13 +195,13 @@
       font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.7;
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
     }
 
     .contact-items {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1.15rem;
     }
 
     .contact-item-row {
@@ -226,15 +226,23 @@
     }
 
     .contact-detail h4 {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       margin-bottom: 0.1rem;
     }
 
-    .contact-detail span {
-      font-size: 0.95rem;
+    .contact-detail span,
+    .contact-link {
+      font-size: 0.92rem;
       font-weight: 600;
       color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--accent-blue-light);
+      text-decoration: underline;
     }
 
     /* Right Form Section */
@@ -365,7 +373,7 @@
     <!-- Layout Kontak Grid -->
     <div class="contact-grid">
 
-      <!-- Kolom Kiri: Informasi Kontak -->
+      <!-- Kolom Kiri: Informasi Kontak (Dilengkapi WhatsApp, Instagram, & Klik GitHub) -->
       <div class="card-box contact-info-card">
         <h3>Mari Terhubung</h3>
         <p>
@@ -374,6 +382,7 @@
         </p>
 
         <div class="contact-items">
+          <!-- Email -->
           <div class="contact-item-row">
             <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
             <div class="contact-detail">
@@ -382,6 +391,25 @@
             </div>
           </div>
 
+          <!-- WhatsApp -->
+          <div class="contact-item-row">
+            <div class="contact-icon-box" style="color: #22c55e;"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="contact-detail">
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="contact-link">+62 8XX-XXXX-XXXX</a>
+            </div>
+          </div>
+
+          <!-- Instagram -->
+          <div class="contact-item-row">
+            <div class="contact-icon-box" style="color: #ec4899;"><i class="fa-brands fa-instagram"></i></div>
+            <div class="contact-detail">
+              <h4>Instagram</h4>
+              <a href="https://instagram.com/username_anda" target="_blank" class="contact-link">@username_anda</a>
+            </div>
+          </div>
+
+          <!-- Lokasi -->
           <div class="contact-item-row">
             <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
             <div class="contact-detail">
@@ -390,11 +418,12 @@
             </div>
           </div>
 
+          <!-- GitHub (Bisa Diklik) -->
           <div class="contact-item-row">
             <div class="contact-icon-box"><i class="fa-brands fa-github"></i></div>
             <div class="contact-detail">
               <h4>GitHub Repository</h4>
-              <span>github.com/hamas-ctrl</span>
+              <a href="https://github.com/hamas-ctrl" target="_blank" class="contact-link">github.com/hamas-ctrl</a>
             </div>
           </div>
         </div>
