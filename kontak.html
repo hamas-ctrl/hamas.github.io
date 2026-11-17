@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profil - Ahmad Hamas | Portofolio Eksklusif</title>
+  <title>Kontak - Ahmad Hamas | Portofolio Eksklusif</title>
 
   <!-- Favicon Logo PNG -->
   <link rel="icon" type="image/png" href="logo.png">
@@ -17,16 +17,16 @@
 
   <style>
     :root {
-      --bg-primary: #000738;
+      --bg-primary: #ffffff;
       --bg-secondary: #000A56;
-      --bg-card: rgba(16, 32, 94, 0.65);
-      --bg-card-hover: rgba(28, 56, 142, 0.85);
+      --bg-card: #000d54;
+      --bg-card-hover: #081861;
       --accent-blue: #FFEA11;
       --accent-blue-light: #FFF04D;
       --accent-glow: rgba(255, 234, 17, 0.4);
       --text-main: #f8fafc;
       --text-muted: #95b3e6;
-      --border-color: rgba(70, 124, 193, 0.28);
+      --border-color: rgba(70, 124, 193, 0.35);
     }
 
     * {
@@ -38,13 +38,13 @@
 
     body {
       background-color: var(--bg-primary);
-      color: var(--text-main);
+      color: #000A56;
       min-height: 100vh;
       display: flex;
       overflow-x: hidden;
       background-image:
-        radial-gradient(circle at 10% 15%, rgba(35, 77, 182, 0.25) 0%, transparent 40%),
-        radial-gradient(circle at 90% 85%, rgba(255, 234, 17, 0.1) 0%, transparent 40%);
+        radial-gradient(circle at 10% 15%, rgba(35, 77, 182, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(255, 234, 17, 0.04) 0%, transparent 40%);
     }
 
     /* Sidebar Navigasi */
@@ -158,19 +158,19 @@
       justify-content: space-between;
       align-items: center;
       padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid rgba(70, 124, 193, 0.2);
       min-height: 50px;
     }
 
     .page-title h2 {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #ffffff;
+      color: #000A56;
     }
 
     .page-title p {
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: #467CC1;
     }
 
     /* Contact Grid Layout */
@@ -185,8 +185,7 @@
       border: 1px solid var(--border-color);
       border-radius: 1.5rem;
       padding: 2rem;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 15px 35px rgba(0, 10, 86, 0.12), 0 5px 15px rgba(0, 0, 0, 0.06);
     }
 
     /* Left Info Section */
@@ -324,16 +323,16 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: var(--bg-primary);
+      background: #f1f5f9;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #234DB6;
+      background: #467CC1;
       border-radius: 4px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: var(--accent-blue);
+      background: #234DB6;
     }
 
     /* Responsive */
