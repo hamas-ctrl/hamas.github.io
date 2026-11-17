@@ -4,9 +4,9 @@
   --bg: #fff;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
-  --accent: #5DCCA0;
-  --accent-bg: rgba(93, 204, 160, 0.1);
-  --accent-border: rgba(93, 204, 160, 0.5);
+  --accent: #FFEA11;
+  --accent-bg: rgba(255, 234, 17, 0.1);
+  --accent-border: rgba(255, 234, 17, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
@@ -32,15 +32,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #b2a8be;
+    --text: #95b3e6;
     --text-h: #f8fafc;
-    --bg: #1E1427;
-    --border: #41394A;
-    --code-bg: #261c31;
-    --accent: #5DCCA0;
-    --accent-bg: rgba(93, 204, 160, 0.15);
-    --accent-border: rgba(93, 204, 160, 0.5);
-    --social-bg: rgba(65, 57, 74, 0.5);
+    --bg: #000738;
+    --border: rgba(70, 124, 193, 0.35);
+    --code-bg: #000A56;
+    --accent: #FFEA11;
+    --accent-bg: rgba(255, 234, 17, 0.15);
+    --accent-border: rgba(255, 234, 17, 0.5);
+    --social-bg: rgba(35, 77, 182, 0.35);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
