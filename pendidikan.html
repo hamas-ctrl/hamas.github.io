@@ -17,16 +17,16 @@
 
   <style>
     :root {
-      --bg-primary: #070b14;
-      --bg-secondary: #0d1322;
-      --bg-card: rgba(19, 29, 49, 0.75);
-      --bg-card-hover: rgba(26, 39, 68, 0.9);
-      --accent-blue: #3b82f6;
-      --accent-blue-light: #60a5fa;
-      --accent-glow: rgba(59, 130, 246, 0.35);
+      --bg-primary: #1E1427;
+      --bg-secondary: #261c31;
+      --bg-card: rgba(65, 57, 74, 0.65);
+      --bg-card-hover: rgba(75, 66, 86, 0.9);
+      --accent-blue: #5DCCA0;
+      --accent-blue-light: #BCFFC0;
+      --accent-glow: rgba(93, 204, 160, 0.35);
       --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-color: rgba(51, 65, 85, 0.45);
+      --text-muted: #b2a8be;
+      --border-color: rgba(93, 204, 160, 0.16);
     }
 
     * {
@@ -43,8 +43,8 @@
       display: flex;
       overflow-x: hidden;
       background-image:
-        radial-gradient(circle at 10% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 40%);
+      radial-gradient(circle at 10% 15%, rgba(93, 204, 160, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 90% 85%, rgba(188, 255, 192, 0.08) 0%, transparent 40%);
     }
 
     /* Sidebar Navigasi */
@@ -76,12 +76,12 @@
     .logo-icon {
       width: 38px;
       height: 38px;
-      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      background: linear-gradient(135deg, var(--accent-blue), #2e966b);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: #120b18;
       box-shadow: 0 4px 15px var(--accent-glow);
     }
 
@@ -109,13 +109,15 @@
     .nav-links li a:hover,
     .nav-links li a.active {
       color: #ffffff;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
-      border: 1px solid rgba(59, 130, 246, 0.3);
+      background: linear-gradient(135deg, rgba(93, 204, 160, 0.2), rgba(93, 204, 160, 0.05));
+      border: 1px solid rgba(93, 204, 160, 0.3);
       transform: translateX(4px);
     }
 
     .nav-links li a.active {
-      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      background: linear-gradient(135deg, var(--accent-blue), #329e73);
+      color: #120b18;
+      font-weight: 700;
       border: none;
       box-shadow: 0 4px 20px var(--accent-glow);
     }
@@ -127,7 +129,7 @@
     }
 
     .sidebar-footer {
-      background: rgba(13, 19, 34, 0.6);
+      background: rgba(30, 20, 39, 0.6);
       border: 1px solid var(--border-color);
       padding: 0.85rem;
       border-radius: 0.85rem;
@@ -187,7 +189,7 @@
       top: 10px;
       bottom: 10px;
       width: 3px;
-      background: linear-gradient(to bottom, var(--accent-blue), rgba(59, 130, 246, 0.2));
+      background: linear-gradient(to bottom, var(--accent-blue), rgba(93, 204, 160, 0.2));
       border-radius: 2px;
     }
 
@@ -233,9 +235,9 @@
     }
 
     .timeline-card:hover {
-      border-color: rgba(59, 130, 246, 0.5);
+      border-color: rgba(93, 204, 160, 0.5);
       transform: translateY(-3px);
-      box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 25px rgba(93, 204, 160, 0.15);
       background: var(--bg-card-hover);
     }
 
@@ -249,8 +251,8 @@
     }
 
     .timeline-year {
-      background: rgba(59, 130, 246, 0.15);
-      border: 1px solid rgba(59, 130, 246, 0.3);
+      background: rgba(93, 204, 160, 0.15);
+      border: 1px solid rgba(93, 204, 160, 0.3);
       color: var(--accent-blue-light);
       padding: 0.25rem 0.8rem;
       border-radius: 50px;
@@ -293,6 +295,24 @@
       border-radius: 6px;
       font-size: 0.75rem;
       font-weight: 500;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #41394A;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-blue);
     }
 
     /* Responsive */
