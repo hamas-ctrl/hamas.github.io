@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profil - Ahmad Hamas | Portofolio Eksklusif</title>
 
-  <!-- Favicon Logo PNG -->
+
   <link rel="icon" type="image/png" href="logo.png">
 
-  <!-- Google Fonts -->
+
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <!-- FontAwesome Icons -->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -47,7 +47,7 @@
         radial-gradient(circle at 90% 85%, rgba(255, 234, 17, 0.04) 0%, transparent 40%);
     }
 
-    /* Sidebar Navigasi */
+
     aside {
       width: 270px;
       background-color: var(--bg-secondary);
@@ -141,7 +141,7 @@
       color: var(--text-muted);
     }
 
-    /* Main Content Layout */
+
     main {
       margin-left: 270px;
       flex: 1;
@@ -152,7 +152,6 @@
       max-width: 1450px;
     }
 
-    /* Top Header Bar */
     .top-header {
       display: flex;
       justify-content: space-between;
@@ -173,7 +172,6 @@
       color: #467CC1;
     }
 
-    /* Bento Grid Utama */
     .bento-grid {
       display: grid;
       grid-template-columns: 1.3fr 0.9fr;
@@ -194,7 +192,6 @@
       box-shadow: 0 20px 45px rgba(0, 10, 86, 0.2), 0 0 25px rgba(35, 77, 182, 0.25);
     }
 
-    /* Kartu Kanan Interaktif (Bisa diklik) */
     .interactive-card {
       cursor: pointer;
       position: relative;
@@ -217,7 +214,7 @@
       opacity: 1;
     }
 
-    /* Hero Welcome Section */
+
     .badge-pill {
       display: inline-flex;
       align-items: center;
@@ -318,7 +315,7 @@
       color: var(--accent-blue-light);
     }
 
-    /* Profile Box */
+
     .right-column {
       display: flex;
       flex-direction: column;
@@ -409,7 +406,7 @@
       gap: 0.35rem;
     }
 
-    /* Feature Grid Bawah */
+
     .feature-grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -460,7 +457,7 @@
       line-height: 1.4;
     }
 
-    /* MODAL / SLIDE PRESENTASI INTERAKTIF */
+
     .modal-overlay {
       display: none;
       position: fixed;
@@ -524,7 +521,7 @@
       display: flex;
     }
 
-    /* Foto Diperbesar (Zoom Modal) */
+
     .modal-avatar-zoom {
       width: 130px;
       height: 130px;
@@ -565,7 +562,7 @@
       max-width: 500px;
     }
 
-    /* Navigasi Slide (Next / Prev) */
+
     .slide-nav-row {
       display: flex;
       justify-content: space-between;
@@ -661,7 +658,7 @@
       }
     }
 
-    /* Custom Scrollbar */
+
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -679,7 +676,7 @@
       background: var(--accent-blue);
     }
 
-    /* Responsive */
+
     @media (max-width: 1024px) {
       aside {
         width: 85px;
@@ -714,7 +711,7 @@
 
 <body>
 
-  <!-- Sidebar Navigasi -->
+
   <aside>
     <div>
       <div class="logo-area">
@@ -734,9 +731,9 @@
     </div>
   </aside>
 
-  <!-- Konten Utama -->
+
   <main>
-    <!-- Top Header Bar (Bagian Kanan Dikosongkan) -->
+
     <div class="top-header">
       <div class="page-title">
         <h2>Dashboard Utama</h2>
@@ -745,10 +742,10 @@
       <div></div>
     </div>
 
-    <!-- Bento Grid Utama -->
+
     <div class="bento-grid">
 
-      <!-- Kotak Kiri: Greeting, Deskripsi, & Metrik -->
+
       <div class="bento-card hero-welcome">
         <div>
           <div class="badge-pill">
@@ -787,7 +784,7 @@
         </div>
       </div>
 
-      <!-- Kotak Kanan: Profile & Tech Stack (Bisa Diklik / Interaktif) -->
+
       <div class="bento-card right-column interactive-card" onclick="openModal()">
         <div class="profile-box">
           <div class="avatar-frame">
@@ -815,7 +812,7 @@
 
     </div>
 
-    <!-- Baris Fitur Bawah -->
+
     <div class="feature-grid-4">
       <div class="feature-card">
         <div class="feature-icon-top"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -840,12 +837,12 @@
     </div>
   </main>
 
-  <!-- MODAL PRESENTASI / SLIDE INTERAKTIF -->
+
   <div class="modal-overlay" id="presentationModal" onclick="handleOverlayClick(event)">
     <div class="modal-container">
       <div class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
 
-      <!-- Slide 1: Identitas & Foto (Bisa di-zoom) -->
+
       <div class="slide-content active" id="slide-1">
         <div class="modal-avatar-zoom" onclick="openLightbox(event)" title="Klik untuk memperbesar foto">
           <img src="ppporto.jpeg" alt="Zoom Foto">
@@ -858,7 +855,7 @@
         </p>
       </div>
 
-      <!-- Slide 2: Fokus Keahlian -->
+
       <div class="slide-content" id="slide-2">
         <div style="font-size: 3rem; color: var(--accent-blue-light); margin-bottom: 0.5rem;">
           <i class="fa-solid fa-code"></i>
@@ -871,7 +868,7 @@
         </p>
       </div>
 
-      <!-- Slide 3: Visi & Misi -->
+
       <div class="slide-content" id="slide-3">
         <div style="font-size: 3rem; color: var(--accent-blue-light); margin-bottom: 0.5rem;">
           <i class="fa-solid fa-rocket"></i>
@@ -884,7 +881,7 @@
         </p>
       </div>
 
-      <!-- Tombol Navigasi Slide & Indikator -->
+
       <div class="slide-nav-row">
         <button class="slide-btn" onclick="changeSlide(-1)"><i class="fa-solid fa-arrow-left"></i> Sebelumnya</button>
 
@@ -899,12 +896,12 @@
     </div>
   </div>
 
-  <!-- LIGHTBOX UNTUK ZOOM FOTO FULLSCREEN -->
+
   <div class="lightbox-overlay" id="lightboxModal" onclick="closeLightbox()">
     <img src="ppporto.jpeg" alt="Fullscreen Foto" class="lightbox-img">
   </div>
 
-  <!-- SCRIPT INTERAKTIF MODAL & SLIDE -->
+
   <script>
     let currentSlide = 1;
     const totalSlides = 3;

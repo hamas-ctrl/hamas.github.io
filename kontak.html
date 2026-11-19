@@ -6,13 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kontak - Ahmad Hamas | Portofolio Eksklusif</title>
 
-  <!-- Favicon Logo PNG -->
   <link rel="icon" type="image/png" href="logo.png">
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -47,7 +44,6 @@
         radial-gradient(circle at 90% 85%, rgba(255, 234, 17, 0.04) 0%, transparent 40%);
     }
 
-    /* Sidebar Navigasi */
     aside {
       width: 270px;
       background-color: var(--bg-secondary);
@@ -141,7 +137,6 @@
       color: var(--text-muted);
     }
 
-    /* Main Content Layout */
     main {
       margin-left: 270px;
       flex: 1;
@@ -152,7 +147,6 @@
       max-width: 1450px;
     }
 
-    /* Top Header Bar */
     .top-header {
       display: flex;
       justify-content: space-between;
@@ -173,7 +167,6 @@
       color: #467CC1;
     }
 
-    /* Contact Grid Layout */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.3fr;
@@ -188,7 +181,6 @@
       box-shadow: 0 15px 35px rgba(0, 10, 86, 0.12), 0 5px 15px rgba(0, 0, 0, 0.06);
     }
 
-    /* Left Info Section */
     .contact-info-card h3 {
       font-size: 1.35rem;
       font-weight: 700;
@@ -250,7 +242,6 @@
       text-decoration: underline;
     }
 
-    /* Right Form Section */
     .contact-form-card h3 {
       font-size: 1.35rem;
       font-weight: 700;
@@ -317,7 +308,6 @@
       box-shadow: 0 6px 25px rgba(255, 234, 17, 0.6);
     }
 
-    /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -335,7 +325,6 @@
       background: #234DB6;
     }
 
-    /* Responsive */
     @media (max-width: 1024px) {
       aside {
         width: 85px;
@@ -362,7 +351,6 @@
 
 <body>
 
-  <!-- Sidebar Navigasi -->
   <aside>
     <div>
       <div class="logo-area">
@@ -382,9 +370,7 @@
     </div>
   </aside>
 
-  <!-- Konten Utama -->
   <main>
-    <!-- Top Header Bar -->
     <div class="top-header">
       <div class="page-title">
         <h2>Hubungi Saya</h2>
@@ -393,10 +379,9 @@
       <div></div>
     </div>
 
-    <!-- Layout Kontak Grid -->
+
     <div class="contact-grid">
 
-      <!-- Kolom Kiri: Informasi Kontak (Dilengkapi WhatsApp, Instagram, & Klik GitHub) -->
       <div class="card-box contact-info-card">
         <h3>Mari Terhubung</h3>
         <p>
@@ -405,7 +390,7 @@
         </p>
 
         <div class="contact-items">
-          <!-- Email -->
+
           <div class="contact-item-row">
             <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
             <div class="contact-detail">
@@ -414,7 +399,7 @@
             </div>
           </div>
 
-          <!-- WhatsApp -->
+
           <div class="contact-item-row">
             <div class="contact-icon-box" style="color: #22c55e;"><i class="fa-brands fa-whatsapp"></i></div>
             <div class="contact-detail">
@@ -423,7 +408,7 @@
             </div>
           </div>
 
-          <!-- Instagram -->
+
           <div class="contact-item-row">
             <div class="contact-icon-box" style="color: #ec4899;"><i class="fa-brands fa-instagram"></i></div>
             <div class="contact-detail">
@@ -432,7 +417,7 @@
             </div>
           </div>
 
-          <!-- Lokasi -->
+
           <div class="contact-item-row">
             <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
             <div class="contact-detail">
@@ -441,7 +426,7 @@
             </div>
           </div>
 
-          <!-- GitHub (Bisa Diklik) -->
+
           <div class="contact-item-row">
             <div class="contact-icon-box"><i class="fa-brands fa-github"></i></div>
             <div class="contact-detail">
@@ -452,7 +437,7 @@
         </div>
       </div>
 
-      <!-- Kolom Kanan: Formulir Pesan -->
+
       <div class="card-box contact-form-card">
         <h3>Kirim Pesan</h3>
         <form onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda berhasil disimulasikan.');">

@@ -6,13 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profil - Ahmad Hamas | Portofolio Eksklusif</title>
 
-  <!-- Favicon Logo PNG -->
   <link rel="icon" type="image/png" href="logo.png">
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <!-- FontAwesome Icons -->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -47,7 +45,7 @@
         radial-gradient(circle at 90% 85%, rgba(255, 234, 17, 0.04) 0%, transparent 40%);
     }
 
-    /* Sidebar Navigasi */
+
     aside {
       width: 270px;
       background-color: var(--bg-secondary);
@@ -141,7 +139,7 @@
       color: var(--text-muted);
     }
 
-    /* Main Content Layout */
+
     main {
       margin-left: 270px;
       flex: 1;
@@ -152,7 +150,7 @@
       max-width: 1450px;
     }
 
-    /* Top Header Bar */
+
     .top-header {
       display: flex;
       justify-content: space-between;
@@ -188,7 +186,7 @@
       box-shadow: 0 15px 35px rgba(0, 10, 86, 0.12), 0 5px 15px rgba(0, 0, 0, 0.06);
     }
 
-    /* Khusus Kotak Kiri (Identitas & Foto) Dibuat Interaktif / Bisa Diklik */
+
     .identity-card-interactive {
       cursor: pointer;
       position: relative;
@@ -269,7 +267,7 @@
       width: 100%;
     }
 
-    /* Kotak Kanan: Informasi Utama (Statis / Normal) */
+
     .details-card h3 {
       font-size: 1.25rem;
       font-weight: 700;
@@ -316,7 +314,7 @@
       font-weight: 600;
     }
 
-    /* Kotak Bawah: Keahlian & Kompetensi (Statis / Normal) */
+
     .skills-section h3 {
       font-size: 1.25rem;
       font-weight: 700;
@@ -355,14 +353,14 @@
       box-shadow: 0 0 12px var(--accent-glow);
     }
 
-    /* MODAL / SLIDE PRESENTASI FOTO & DETAIL */
+
     .modal-overlay {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 0;
-      /* Diubah lewat JS */
+
       width: 100%;
       height: 100%;
       background: rgba(0, 6, 40, 0.88);
@@ -409,7 +407,7 @@
       color: white;
     }
 
-    /* Foto Profil Di Dalam Modal (Bisa di-zoom) */
+
     .modal-avatar-zoom {
       width: 140px;
       height: 140px;
@@ -454,7 +452,7 @@
       margin: 0 auto;
     }
 
-    /* Lightbox Fullscreen untuk Zoom Foto */
+
     .lightbox-overlay {
       display: none;
       position: fixed;
@@ -477,7 +475,7 @@
       box-shadow: 0 0 50px var(--accent-glow);
     }
 
-    /* Custom Scrollbar */
+
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -517,7 +515,7 @@
       }
     }
 
-    /* Responsive */
+
     @media (max-width: 1024px) {
       aside {
         width: 85px;
@@ -544,7 +542,7 @@
 
 <body>
 
-  <!-- Sidebar Navigasi -->
+
   <aside>
     <div>
       <div class="logo-area">
@@ -564,9 +562,8 @@
     </div>
   </aside>
 
-  <!-- Konten Utama -->
   <main>
-    <!-- Top Header Bar -->
+
     <div class="top-header">
       <div class="page-title">
         <h2>Profil Pribadi</h2>
@@ -575,10 +572,8 @@
       <div></div>
     </div>
 
-    <!-- Layout Profil Grid Asli -->
     <div class="profile-grid">
 
-      <!-- Kotak Kiri: Kartu Identitas & Foto (INTERAKTIF / Bisa Dipencet) -->
       <div class="card-box identity-card-interactive" onclick="openProfileModal()">
         <div class="profile-avatar-large">
           <img src="ppporto.jpeg" alt="Foto Profil Ahmad Hamas">
@@ -593,7 +588,6 @@
         </div>
       </div>
 
-      <!-- Kotak Kanan: Informasi Utama (STATIS / Normal) -->
       <div class="card-box details-card">
         <h3><i class="fa-solid fa-id-card"></i> Informasi Utama</h3>
         <p class="bio-paragraph">
@@ -624,7 +618,7 @@
 
     </div>
 
-    <!-- Kotak Bawah: Keahlian & Kompetensi Teknis (STATIS / Normal & Rapi) -->
+
     <div class="card-box skills-section">
       <h3><i class="fa-solid fa-code-branch"></i> Keahlian & Kompetensi Teknis</h3>
 
@@ -670,12 +664,9 @@
     </div>
   </main>
 
-  <!-- MODAL DETAIL PROFIL & ZOOM FOTO -->
   <div class="modal-overlay" id="profileModal" onclick="handleOverlayClick(event)">
     <div class="modal-container">
       <div class="modal-close" onclick="closeProfileModal()"><i class="fa-solid fa-xmark"></i></div>
-
-      <!-- Foto di dalam modal yang bisa di-zoom/perbesar -->
       <div class="modal-avatar-zoom" onclick="openLightbox(event)" title="Klik untuk memperbesar foto secara penuh">
         <img src="ppporto.jpeg" alt="Zoom Foto Profil">
       </div>
@@ -690,12 +681,10 @@
     </div>
   </div>
 
-  <!-- LIGHTBOX FULLSCREEN ZOOM FOTO -->
+
   <div class="lightbox-overlay" id="lightboxModal" onclick="closeLightbox()">
     <img src="ppporto.jpeg" alt="Fullscreen Foto" class="lightbox-img">
   </div>
-
-  <!-- SCRIPT INTERAKTIF -->
   <script>
     function openProfileModal() {
       document.getElementById('profileModal').style.display = 'flex';
